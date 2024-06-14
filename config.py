@@ -26,7 +26,7 @@ default_terms_csv = "terms_template.csv"
 # Below is all the text you can customize for the app. Don't remove the quotations around the text. Don't change the variable names.
 
 # The title of the app
-app_title = "DIY AI-enhanced study app"
+app_title = "DIY AI-enhanced study app Practice"
 
 # The subtitle of the app
 app_author = "courtesy of UCSD School of Biological Sciences"
@@ -51,7 +51,13 @@ The goal of this app is to help you learn and and assess your knowledge of core 
 2. *Pause and think for 30 seconds.* What is everything you associate with this term? 
 3. Choose to either answer immediately or dive into your notes or textbook to refresh your memory.
 4. Write a simple definition of the selected term. Try to include a real-world example and any other associations you might need to know for an exam. 
-5. Please follow-up with questions. If you don't know something, ask for a simple definition or example! **Have a conversation!**'''
+5. Please follow-up with questions. If you don't know something, ask for a simple definition or example! **Have a conversation!**
+
+
+**Instructions for Grace:**
+1. get an API key so that the app is fully functional and working
+2. start making the videos on how to do everything
+3. eat breakfast'''
 
 # The title of the sidebar
 sidebar_title = "Have your own terms to study?"
