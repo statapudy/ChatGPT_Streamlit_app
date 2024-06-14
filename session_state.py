@@ -211,6 +211,30 @@ if st.button('Run Code'):
     output_placeholder.code(output, language='python') 
 
 ############################################################################################################
+
+#File Retrieval
+    
+def list_files(directory):
+    files = []
+    for filename in os.listdir(directory):
+        path = os.path.join(directory, filename)
+        if os.path.isfile(path):
+            files.append(filename)
+    return files
+
+# List files in the upload directory
+files = list_files(UPLOAD_FOLDER)
+
+if files:
+    file_to_download = st.selectbox('Select a file to download', files)
+    if st.button('Download File'):
+        file_path = os.path.join(UPLOAD_FOLDER, file_to_download)
+        with open(file_path, "rb") as f:
+            st.download_button('Download File', f, file_name=file_to_download)
+else:
+    st.write("No files available")
+
+############################################################################################################
 # ChatGPT
 # Initialize the OpenAI client
 client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
@@ -296,9 +320,7 @@ prompt = st.chat_input("Type your message here...")
 
 
 
-############################################################################################################
 
-#File Retrieval
 
 
 #if  'user_input' not in st.session_state:
