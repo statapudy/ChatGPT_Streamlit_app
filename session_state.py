@@ -11,6 +11,8 @@ import base64
 import logging
 import io
 import config
+import contextlib
+import traceback
 from openai import OpenAI
 
 ############################################################################################################
@@ -99,6 +101,8 @@ def create_download_link(file_path, file_name):
         error_message = f"An error occurred: {str(e)}"
         st.error(error_message)
         logging.exception(error_message)
+
+
 
 # Download link for the template file
 template_file_path = config.default_terms_csv
@@ -261,6 +265,39 @@ with st.sidebar:
 
 # Get user input
 prompt = st.chat_input("Type your message here...")
+
+############################################################################################################
+
+#Code Interpreter
+
+#python input
+def safe_execute(code):
+    """Executes the given code safely and returns the output or errors."""
+    output = io.StringIO()
+    try:
+        # Redirect stdout to capture print statements
+        with contextlib.redirect_stdout(output):
+            exec(code, {"__builtins__": None}, {})  # Safe environment with no built-ins available
+    except Exception as e:
+        # Write the exception type and message to the output
+        output.write(f'An error occurred: {str(e)}\n')
+        # Also capture and write the traceback
+        traceback.print_exc(file=output)
+    
+    return output.getvalue()
+
+# Streamlit layout
+st.subheader('Python Code Interpreter')
+user_code = st.text_area("Enter your Python code here:", height=300, placeholder="Write your Python code here...")
+
+if st.button('Run Code'):
+    output = safe_execute(user_code)
+    output_placeholder = st.empty()
+    output_placeholder.code(output, language='python') 
+
+############################################################################################################
+
+#File Retrieval
 
 
 #if  'user_input' not in st.session_state:
