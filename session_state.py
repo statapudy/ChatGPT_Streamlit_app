@@ -211,8 +211,14 @@ user_code = st.text_area("Enter your Python code here:", height=300, placeholder
 
 if st.button('Run Code'):
     output = safe_execute(user_code)
-    output_placeholder = st.empty()
-    output_placeholder.code(output, language='python') 
+    # Display the code block
+    st.subheader('Your Python Code:')
+    st.code(user_code, language='python')
+    #terminal like out put
+    st.subheader('Terminal Output:')
+    st.text_area(label="", value=output, height=150, disabled=True)
+    
+    
 
 ############################################################################################################
 
