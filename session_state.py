@@ -192,16 +192,16 @@ def safe_execute(code):
     try:
         # Redirect stdout to capture print statements
         with contextlib.redirect_stdout(output):
-            exec(code, {"__builtins__": None}, {})  # Safe environment with no built-ins available
+            # Safe environment with limited built-ins
+            exec(code, {"__builtins__": None}, {})
     except Exception as e:
-        # Write the exception type and message to the output
         output.write(f'An error occurred: {str(e)}\n')
-        # Also capture and write the traceback
+        # Capture the traceback to provide insight into what went wrong
         traceback.print_exc(file=output)
     
     return output.getvalue()
 
-# Streamlit layout
+# Streamlit UI
 st.subheader('Python Code Interpreter')
 user_code = st.text_area("Enter your Python code here:", height=300, placeholder="Write your Python code here...")
 
