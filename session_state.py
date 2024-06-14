@@ -213,8 +213,14 @@ if st.button('Run Code'):
 ############################################################################################################
 
 #File Retrieval
-    
+
+U# Define the directory for uploaded files
+UPLOAD_FOLDER = 'uploaded_files'
+if not os.path.exists(UPLOAD_FOLDER):
+    os.makedirs(UPLOAD_FOLDER)
+
 def list_files(directory):
+    """Returns a list of filenames found in the directory."""
     files = []
     for filename in os.listdir(directory):
         path = os.path.join(directory, filename)
@@ -222,15 +228,26 @@ def list_files(directory):
             files.append(filename)
     return files
 
-# List files in the upload directory
-files = list_files(UPLOAD_FOLDER)
+# Function to upload files
+def upload_files():
+    uploaded_file = st.file_uploader("Choose a file to upload")
+    if uploaded_file is not None:
+        file_path = os.path.join(UPLOAD_FOLDER, uploaded_file.name)
+        with open(file_path, "wb") as f:
+            f.write(uploaded_file.getbuffer())
+        st.success('File uploaded successfully.')
 
+# Display file upload area
+upload_files()
+
+# Display files in the upload directory
+files = list_files(UPLOAD_FOLDER)
 if files:
     file_to_download = st.selectbox('Select a file to download', files)
     if st.button('Download File'):
         file_path = os.path.join(UPLOAD_FOLDER, file_to_download)
         with open(file_path, "rb") as f:
-            st.download_button('Download File', f, file_name=file_to_download)
+            st.download_button('Download File', f.read(), file_name=file_to_download)
 else:
     st.write("No files available")
 
