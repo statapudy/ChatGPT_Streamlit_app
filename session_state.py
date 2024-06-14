@@ -189,11 +189,15 @@ elif not st.session_state.selected_term:
 def safe_execute(code):
     """Executes the given code safely and returns the output or errors."""
     output = io.StringIO()
+    safe_builtins ={
+        'print': print,
+        'range': range,
+    }
     try:
         # Redirect stdout to capture print statements
         with contextlib.redirect_stdout(output):
             # Safe environment with limited built-ins
-            exec(code, {"__builtins__": None}, {})
+            exec(code, {"__builtins__": safe_builtins}, {})
     except Exception as e:
         output.write(f'An error occurred: {str(e)}\n')
         # Capture the traceback to provide insight into what went wrong
