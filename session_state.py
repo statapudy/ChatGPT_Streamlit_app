@@ -214,7 +214,7 @@ if st.button('Run Code'):
 
 #File Retrieval
 
-U# Define the directory for uploaded files
+# Define the directory for uploaded files
 UPLOAD_FOLDER = 'uploaded_files'
 if not os.path.exists(UPLOAD_FOLDER):
     os.makedirs(UPLOAD_FOLDER)
