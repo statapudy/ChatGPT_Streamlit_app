@@ -186,85 +186,82 @@ elif not st.session_state.selected_term:
 #Code Interpreter
 
 #python input
-def safe_execute(code):
-    """Executes the given code safely and returns the output or errors."""
-    output = io.StringIO()
-    safe_builtins ={
-        'print': print,
-        'range': range,
-    }
-    try:
-        # Redirect stdout to capture print statements
-        with contextlib.redirect_stdout(output):
-            # Safe environment with limited built-ins
-            exec(code, {"__builtins__": safe_builtins}, {})
-    except Exception as e:
-        output.write(f'An error occurred: {str(e)}\n')
+#def safe_execute(code):
+  ##  """Executes the given code safely and returns the output or errors."""
+  #  output = io.StringIO()
+  #  safe_builtins ={
+  #      'print': print,
+  #      'range': range,
+   # }
+   # try:
+   #     # Redirect stdout to capture print statements
+   #     with contextlib.redirect_stdout(output):
+    #        # Safe environment with limited built-ins
+   #         exec(code, {"__builtins__": safe_builtins}, {})
+    #except Exception as e:
+    #    output.write(f'An error occurred: {str(e)}\n')
         # Capture the traceback to provide insight into what went wrong
-        traceback.print_exc(file=output)
-    
-    return output.getvalue()
+    #    traceback.print_exc(file=output)
+   # return output.getvalue()
 
 # Streamlit UI
-st.subheader('Python Code Interpreter')
-user_code = st.text_area("Enter your Python code here:", height=300, placeholder="Write your Python code here...")
+#st.subheader('Python Code Interpreter')
+#user_code = st.text_area("Enter your Python code here:", height=300, placeholder="Write your Python code here...")
 
-if st.button('Run Code'):
-    output = safe_execute(user_code)
-    # Display the code block
-    st.subheader('Your Python Code:')
-    st.code(user_code, language='python')
-    #terminal like out put
-    st.subheader('Terminal Output:')
-    st.text_area(label="", value=output, height=150, disabled=True)
+#if st.button('Run Code'):
+#    output = safe_execute(user_code)
+#    # Display the code block
+#    st.subheader('Your Python Code:')
+#   st.code(user_code, language='python')
+#    #terminal like out put
+#    st.subheader('Terminal Output:')
+#    st.text_area(label="", value=output, height=150, disabled=True)
     
-    
-
 ############################################################################################################
 
 #File Retrieval
 
 # Define the directory for uploaded files
-UPLOAD_FOLDER = 'uploaded_files'
-if not os.path.exists(UPLOAD_FOLDER):
-    os.makedirs(UPLOAD_FOLDER)
-
-def list_files(directory):
-    """Returns a list of filenames found in the directory."""
-    files = []
-    for filename in os.listdir(directory):
-        path = os.path.join(directory, filename)
-        if os.path.isfile(path):
-            files.append(filename)
-    return files
+#UPLOAD_FOLDER = 'uploaded_files'
+#if not os.path.exists(UPLOAD_FOLDER):
+#    os.makedirs(UPLOAD_FOLDER)
+#
+#def list_files(directory):
+#    """Returns a list of filenames found in the directory."""
+#    files = []
+ #   for filename in os.listdir(directory):
+#        path = os.path.join(directory, filename)
+#        if os.path.isfile(path):
+#            files.append(filename)
+#    return files
 
 # Function to upload files
-def upload_files():
-    uploaded_file = st.file_uploader("Choose a file to upload")
-    if uploaded_file is not None:
-        file_path = os.path.join(UPLOAD_FOLDER, uploaded_file.name)
-        with open(file_path, "wb") as f:
-            f.write(uploaded_file.getbuffer())
-        st.success('File uploaded successfully.')
+#def upload_files():
+ #   uploaded_file = st.file_uploader("Choose a file to upload")
+#    if uploaded_file is not None:
+#        file_path = os.path.join(UPLOAD_FOLDER, uploaded_file.name)
+#        with open(file_path, "wb") as f:
+#            f.write(uploaded_file.getbuffer())
+#        st.success('File uploaded successfully.')
 
 # Display file upload area
-upload_files()
+#upload_files()
 
 # Display files in the upload directory
-files = list_files(UPLOAD_FOLDER)
-if files:
-    file_to_download = st.selectbox('Select a file to download', files)
-    if st.button('Download File'):
-        file_path = os.path.join(UPLOAD_FOLDER, file_to_download)
-        with open(file_path, "rb") as f:
-            st.download_button('Download File', f.read(), file_name=file_to_download)
-else:
-    st.write("No files available")
+#files = list_files(UPLOAD_FOLDER)
+#if files:
+#    file_to_download = st.selectbox('Select a file to download', files)
+#    if st.button('Download File'):
+#        file_path = os.path.join(UPLOAD_FOLDER, file_to_download)
+ #       with open(file_path, "rb") as f:
+ #           st.download_button('Download File', f.read(), file_name=file_to_download)
+#else:
+ #   st.write("No files available")
 
 ############################################################################################################
 # ChatGPT
 # Initialize the OpenAI client
-client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
+client = OpenAI(api_key=st.secrets["api_keys"]["OPENAI_API_KEY"])
 
 # Initialize the session state variables if they don't exist
 if "openai_model" not in st.session_state:
