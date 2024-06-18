@@ -65,6 +65,10 @@ db.sqlite3-journal
 instance/
 .webassets-cache
 
+# Streamlit stuff:
+.streamlit/
+secrets.toml
+
 # Scrapy stuff:
 .scrapy
 
@@ -152,9 +156,6 @@ dmypy.json
 # Cython debug symbols
 cython_debug/
 
-#.env file full of secret stuff
-.env
-secrets.toml
 
 # PyCharm
 #  JetBrains specific template is maintained in a separate JetBrains.gitignore that can
@@ -163,8 +164,3 @@ secrets.toml
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
 # Inside .gitignore
-myenv/
-secrets.toml
-
-.streamlit/secrets.toml
-.env
