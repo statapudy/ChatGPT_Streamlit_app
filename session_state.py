@@ -340,7 +340,7 @@ with st.sidebar:
     st.markdown(config.app_repo_license_message, unsafe_allow_html=True)
 
 # Get user input
-prompt = st.chat_input("Type your message here...")
+#prompt = st.chat_input("Type your message here...")
 
 
 
