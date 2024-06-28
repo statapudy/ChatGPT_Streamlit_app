@@ -6,27 +6,25 @@
 
 # Below is the configuration for the chatbot
 
-# The model_name refers to the name of the model you want to use. You can choose from the following models: 
+# The model_name refers to the name of the model you want to use. You can choose from the following models: https://platform.openai.com/docs/models/gpt-4o
 ai_model = "gpt-4o"
 
 # Temperature refers to the randomness/creativity of the responses. A higher temperature will result in more random/creative responses. It varies between 0 and 1.
 temperature = 0
 
 # Max_tokens refers to the maximum number of tokens (words) the AI can generate. The higher the number, the longer the response. It varies between 1 and 2048.
-max_tokens = 500
+max_tokens = 1000
 
-############################################################################################################
+# Frequency penalty parameter for the response. Higher penalty will result in more diverse responses. It varies between 0 and 1.
+frequency_penalty = 0.5
 
-# Below is the name for your default csv terms file. You can change this to any csv file you want to use as your default terms file. It must be in the same folder as the main app.py file.
-
-default_terms_csv = "terms_template.csv"
-
-############################################################################################################
+# Presence penalty parameter for the response. Higher penalty will result in less repetitive responses. It varies between 0 and 1.
+presence_penalty = 0.5
 
 # Below is all the text you can customize for the app. Don't remove the quotations around the text. Don't change the variable names.
 
 # The title of the app
-app_title = "DIY AI-enhanced study app Practice"
+app_title = "OpenAI Powered Chatbot for Biology Students"
 
 # The subtitle of the app
 app_author = "courtesy of UCSD School of Biological Sciences"
@@ -36,52 +34,74 @@ intro_para = " "
 
 # The user's instructions for the app
 instructions = '''
-**Instructions for educators:**
-The goal of this app is to help students learn and assess their knowledge of core course concepts and examples.
-1. Please visit the following link to see full instructions to copy this app so you can customize it and use it in your classroom.
-2. You can customize the terms in the terms_template.csv file. You can delete everything below the first row and add in your own terms in the first column. You can open and edit it in Excel, Google Sheets, or any text editor. Make sure that you don't change the file extension from csv. Once done, upload it below. The app will use your terms for the study session.
-3. These instructions are formatted in Markdown. You can customize them as needed. If you don't know what Markdown is, it's a simple way to format text on the web. You can learn more about it [here](https://www.markdownguide.org/getting-started/).
-4. You can also customize the text in this app by editing the config.py file. This includes the title, instructions, and more.
-5. If you have any questions or need help, please reach out to the Reuther Lab at UCSD.
-6. When you are ready to deploy, please erase the **Instructions for educators**.
+Welcome to the Open-Ended GPT-4 Chatbot! This guide will help you understand how to use the chatbot effectively and provide tips for creating effective prompts.
 
-**Instructions for students:**
-The goal of this app is to help you learn and and assess your knowledge of core course concepts and examples. 
-1. Click the button below to show a random course term. 
-2. *Pause and think for 30 seconds.* What is everything you associate with this term? 
-3. Choose to either answer immediately or dive into your notes or textbook to refresh your memory.
-4. Write a simple definition of the selected term. Try to include a real-world example and any other associations you might need to know for an exam. 
-5. Please follow-up with questions. If you don't know something, ask for a simple definition or example! **Have a conversation!**
+## Getting Started
 
+1. **Open the Application**: Launch the chatbot application from your browser.
+2. **Enter Your Message**: Type your message in the input box at the bottom of the chat window.
+3. **Send Your Message**: Press `Enter` or click the `Send` button to submit your message.
+4. **Read the Response**: The chatbot will generate a response and display it in the chat window.
 
-**Instructions for Grace:**
-1. get an API key so that the app is fully functional and working
-2. start making the videos on how to do everything
-3. eat breakfast'''
+## Effective Prompting Guide
+
+To get the most out of the chatbot, it's essential to craft your prompts effectively. Here are some tips:
+
+### Be Clear and Specific
+
+- **Specificity**: Clearly state what you want to know or discuss. For example, instead of asking, "Tell me about biology," ask, "Can you explain the process of photosynthesis?"
+- **Context**: Provide context if necessary. For example, "In the context of human biology, what is the function of the mitochondria?"
+
+### Use Proper Grammar and Punctuation
+
+- **Clarity**: Use correct grammar and punctuation to ensure your prompt is easy to understand.
+- **Complete Sentences**: Write in complete sentences to avoid ambiguity.
+
+### Ask Open-Ended Questions
+
+- **Engagement**: Open-ended questions encourage detailed responses. For example, "What are the benefits of using AI in education?" is better than "Is AI useful?"
+
+### Break Down Complex Questions
+
+- **Simplify**: If you have a complex question, break it into smaller, more manageable parts. For example, instead of asking, "How does the nervous system work?" you could ask, "What are the main components of the nervous system?" followed by "How do neurons transmit signals?"
+
+### Experiment and Iterate
+
+- **Trial and Error**: Don't be afraid to experiment with different phrasing. If you don't get the desired response, try rephrasing your question.
+- **Feedback**: Use the chatbot's responses to refine your prompts for better results.
+
+## Example Prompts
+
+1. **General Inquiry**: "Can you explain the theory of evolution?"
+2. **Detailed Explanation**: "What are the main stages of cellular respiration?"
+3. **Contextual Query**: "In computer science, what is the significance of algorithms?"
+4. **Comparative Question**: "How does renewable energy compare to fossil fuels in terms of environmental impact?"
+5. **Exploratory Question**: "What are some of the latest advancements in biotechnology?"
+
+## Troubleshooting
+
+- **No Response**: If the chatbot does not respond, check your internet connection and try refreshing the page.
+- **Inaccurate Responses**: If the response seems inaccurate, try rephrasing your prompt for clarity.
+- **Technical Issues**: For technical issues, contact the support team or refer to the application's help section.
+
+By following these guidelines, you can effectively interact with the GPT-4 chatbot and obtain meaningful and informative responses. Enjoy exploring the capabilities of this advanced AI tool!
+'''
 
 # The title of the sidebar
-sidebar_title = "Have your own terms to study?"
-
-# The instructions for the template
-sidebar_instructions = "Do you have your own terms to study? If so, download the terms_template.csv file. You can delete everything below the first row and add in your own terms in the first column. You can open and edit it in Excel, Google Sheets, or any text editor. Make sure that you don't change the file extension from csv. Once done, upload it below. The app will use your terms for the study session."
+sidebar_title = "Resources for effectively using an AI chatbot"
 
 app_creation_message = "The template for this app was created by Keefe Reuther and the members of the Reuther Lab - [https://reutherlab.biosci.ucsd.edu/](https://reutherlab.biosci.ucsd.edu/)"
 
-app_repo_license_message = "It can be found at [https://github.com/The-Reuther-Lab/SABER_2024](https://github.com/The-Reuther-Lab/SABER_2024) and is distributed under the GNU GPL-3 License."
+app_repo_license_message = "It can be found at [https://github.com/The-Reuther-Lab/ChatGPT_Streamlit_app](https://github.com/The-Reuther-Lab/ChatGPT_Streamlit_app) and is distributed under the GNU GPL-3 License."
 
 warning_message = "**ChatGPT can make errors and does not replace verified and reputable online and classroom resources.**"
 
 ############################################################################################################
 
-### PROMPTS
-
-# Below is the initial prompt that the AI will use to start the conversation with the user. The user will not see this prompt.
-initial_prompt = "You are an assistant knowledgeable in university-level biology helping a student in a lower division college course. Provide concise and accurate responses to questions or definitions related to biology questions the user asks. The user will be responding to the following instructions set in single quotations: (start of instructions to the user) 'The goal of this app is to help you learn and and assess your knowledge of core course concepts and examples. 1. Click the button below to show a random course term. 2. *Pause and think for 30 seconds.* What is everything you associate with this term? 3. Choose to either answer immediately or dive into your notes or textbook to refresh your memory.4. Write a simple definition of the selected term. Try to include a real-world example and any other associations you might need to know for an exam. 5. Please follow-up with questions. **Have a conversation!**' (end of instructions to the user). Provide formative feedback in a clear, succinct way. Mention any factual errors in the response. Employ the Socratic method, giving the user hints and guiding questions with the goal of getting the user to provide information that was not in the initial user response. While using the socratic method, it is important to help the user identify common misconceptions, especially if they write one in their chat message. You may also include basic metaphors and analogies in your response as long as they are accurate and not misleading or biased heavily toward a native English speaker or American. Do NOT use extraneous language, such as 'your answer lacks a detailed explanation'. Keep in mind that the user's response is limited to 500 characters, so there is no expectation that the correct answer is more than a short paragraph. Try and keep the system's response within 1000 characters. Make sure to always to provide feedback for each part of the user's input. Do not provide advice, such as: 'Remember, the more specific and detailed your response, the better your understanding of the concept will be.' Your secondary goal as the chat progresses is to help users explicitly think about their learning and study process as well as best practices in information and data literacy. If they write anything unrelated to topics reasonably covered in an undergraduate biology course, please respond with: I appreciate your question, but if you would like to take a break from studying, might I suggest a tall glass of water and mindful relaxation."
-
-# Below is the follow-up prompt that the AI will use once the user has typed a message. The user will not see this prompt.
-# DO NOT REMOVE/EDIT anything outside of the triple quotations or anything inside the curly braces
-def term_prompt(selected_term, selected_schema):
-    return f"""You are an assistant knowledgeable in university-level biology helping a student in a lower division college course. Provide concise and accurate responses to questions or definitions related to the term '{selected_term}'. The user will be responding to the following instructions set in single quotations:(start of instructions to the user) 'The goal of this app is to help you learn and and assess your knowledge of core course concepts and examples. 1. Click the button below to show a random course term. 2. *Pause and think for 30 seconds.* What is everything you associate with this term? 3. Choose to either answer immediately or dive into your notes or textbook to refresh your memory.4. Write a simple definition of the selected term. Try to include a real-world example and any other associations you might need to know for an exam. 5. Please follow-up with questions. **Have a conversation!**' (end of instructions to the user). Provide formative feedback in a clear, succinct way. Base your response on the following definition: '{selected_schema}'. Mention any factual errors in the response. Employ the Socratic method, giving the user hints and guiding questions with the goal of getting the user to provide information that was not in the initial user response. While using the socratic method, it is important to help the user identify common misconceptions, especially if they write one in their chat message. You may also include basic metaphors and analogies in your response as long as they are accurate and not misleading or biased heavily toward a native English speaker or American. Do NOT use extraneous language, such as 'your answer lacks a detailed explanation'. Keep in mind that my response is limited to 500 characters, so there is no expectation that the correct answer is more than a short paragraph. Try and keep your response within 1000 characters. Make sure to always to provide feedback for each part of the users input. Do not provide advice, such as: 'Remember, the more specific and detailed your response, the better your understanding of the concept will be.' Your secondary goal as the chat progresses is to help users explicitly think about their learning and study process as well as best practices in information and data literacy. If they write anything unrelated to topics possibly covered in an undergraduate biology course, please respond with: I appreciate your question, but if you would like to take a break from studying, might I suggest a tall glass of water and mindful relaxation."""
+# System role message to set limits on user questions
+system_role_message = """
+This chatbot is assuming the role are an assistant knowledgeable in university-level biology. I will only answer questions likely related to biology, teaching, learning, and related topics that may be of relevance in a biology classroom. If a user asks a question outside of biology, this chatbot will inform you that your question is outside of its purview and prompt you to ask another question
+"""
 
 ############################################################################################################
 
@@ -91,18 +111,18 @@ def term_prompt(selected_term, selected_schema):
 # You can add the title of the resource, the URL, and a brief description. To delete or add more resources, follow the same format.
 resources = [
     {
-        "title": "Evolution 101 - UC Berkeley",
-        "url": "https://evolution.berkeley.edu/evolution-101/",
-        "description": "A comprehensive guide to the basics of evolution, covering key concepts, history of life, and evolutionary mechanisms."
+        "title": "OpenAI Prompt engineering guide",
+        "url": "https://platform.openai.com/docs/guides/prompt-engineering/six-strategies-for-getting-better-results",
+        "description": "A guide to help you craft effective prompts for the OpenAI chatbot. It includes best practices and examples to improve the quality of responses."
     },
     {
-        "title": "OpenStax - Biology",
-        "url": "https://openstax.org/details/books/biology",
-        "description": "Provides free, peer-reviewed, openly licensed textbooks for introductory college and AP-level biology courses."
+        "title": "UC Berkeley Library Guide to Detecting Fake News",
+        "url": "https://guides.lib.berkeley.edu/fake-news",
+        "description": "This UC Berkeley Library guide offers comprehensive strategies and resources for identifying fake news, understanding its impact, and evaluating the credibility of various news sources, including lists of known fake news sites and tips for detecting misinformation."
     },
-    {
-        "title": "Scitable by Nature Education",
-        "url": "https://www.nature.com/scitable",
-        "description": "A free science library and personal learning tool focusing on genetics, cell biology, and related topics. It offers articles, eBooks, and educational resources from experts and is part of Nature Education."
-    }
+        {
+        "title": "Is it cheating to use ChatGPT?",
+        "url": "https://guides.lib.berkeley.edu/fake-news",
+        "description": "The UC San Diego Academic Integrity Office provides guidance on the appropriate use of generative AI tools in educational settings, emphasizing the importance of adhering to instructor guidelines and the potential consequences of misuse, including integrity violations and academic penalties."
+    },
 ]
