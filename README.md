@@ -20,22 +20,24 @@ This repository contains a Streamlit-based web application designed to facilitat
 To set up the application locally, follow these steps:
 
 1. **Clone the Repository**:
-bash
+```bash
    git clone https://github.com/The-Reuther-Lab/ChatGPT_Streamlit_app.git
    cd ChatGPT_Streamlit_app
+```
    
-2. **Install Dependencies**:
-bash
+2. **Install Dependencies**: 
+```bash
    pip install -r requirements.txt
+```
    
-3. **Configure the Application**:
+1. **Configure the Application**:
    - Edit the `config.py` file rather than the `app.py` file.
    - You will need to add your OpenAI API key to a `/streamlit/secrets.toml` file if running the app locally.
    - You can also run this app via Streamlit Community Cloud, which will rely on the API key you provide in the Streamlit UI.
    - Here is a link for Streamlit Community Cloud: [Streamlit Cloud](https://share.streamlit.io/)
    - Here is a link for setting up your own OpenAI API key: [OpenAI API](https://openai.com/index/openai-api/)
 
-4. **Run the Application**:
+2. **Run the Application**:
 bash
    streamlit run app.py
    
