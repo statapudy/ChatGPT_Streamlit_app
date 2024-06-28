@@ -29,7 +29,11 @@ bash
    pip install -r requirements.txt
    
 3. **Configure the Application**:
-   - Edit the `config.py` file to set your OpenAI API key and adjust other settings as needed.
+   - Edit the `config.py` file rather than the `app.py` file.
+   - You will need to add your OpenAI API key to a `/streamlit/secrets.toml` file if running the app locally.
+   - You can also run this app via Streamlit Community Cloud, which will rely on the API key you provide in the Streamlit UI.
+   - Here is a link for Streamlit Community Cloud: [Streamlit Cloud](https://share.streamlit.io/)
+   - Here is a link for setting up your own OpenAI API key: [OpenAI API](https://openai.com/index/openai-api/)
 
 4. **Run the Application**:
 bash
